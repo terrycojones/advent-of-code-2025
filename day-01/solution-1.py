@@ -6,7 +6,7 @@ def move(current, specification, size):
     assert direction in "LR"
     sign = 1 if direction == "R" else -1
     distance = int(specification[1:])
-    return (current + (distance * sign)) % size
+    return (current + distance * sign) % size
 
 
 size = 100
