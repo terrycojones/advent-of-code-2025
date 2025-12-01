@@ -7,8 +7,10 @@ def move_clicks(current, specification, size):
     assert direction in "LR"
     sign = 1 if direction == "R" else -1
     distance = int(specification[1:])
+    revolutions, remainder = divmod(distance, size)
+    clicks += revolutions
 
-    for _ in range(distance):
+    for _ in range(remainder):
         current = (current + sign) % size
         if current == 0:
             clicks += 1
