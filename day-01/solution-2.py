@@ -2,13 +2,11 @@ import sys
 
 
 def move_clicks(current, specification, size):
-    clicks = 0
     direction = specification[0]
     assert direction in "LR"
     sign = 1 if direction == "R" else -1
     distance = int(specification[1:])
-    revolutions, remainder = divmod(distance, size)
-    clicks += revolutions
+    clicks, remainder = divmod(distance, size)
 
     for _ in range(remainder):
         current = (current + sign) % size
