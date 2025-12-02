@@ -1,5 +1,3 @@
-import sys
-
 from lib import read_input
 
 
