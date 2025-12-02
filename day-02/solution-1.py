@@ -14,8 +14,8 @@ def invalid(n):
 
 
 total = 0
+
 for a, b in read_input():
-    assert b >= a
     for n in range(a, b+1):
         total += invalid(n)
 
