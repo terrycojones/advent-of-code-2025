@@ -5,8 +5,7 @@ from lib import read_input
 def invalid(n):
     s = str(n)
     for plen in range(1, (len(s) >> 1) + 1):
-        batches = ["".join(b) for b in batched(s, plen)]
-        if len(set(batches)) == 1:
+        if len(set(batched(s, plen))) == 1:
             return n
     return 0
 
