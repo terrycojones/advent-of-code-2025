@@ -1,6 +1,9 @@
 all:
 	@echo "There is no default make target"
 
+ruff:
+	ruff check .
+
 clean:
 	find . \( -name '*.pyc' -o -name '*~' \) -print0 | xargs -r -0 rm
 	find . -name '__pycache__' -type d -print0 | xargs -r -0 rm -r

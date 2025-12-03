@@ -3,9 +3,9 @@ from lib import read_input
 
 def invalid(n):
     s = str(n)
-    l = len(s)
-    if l % 2 == 0:
-        half = l >> 1
+    length = len(s)
+    if length % 2 == 0:
+        half = length >> 1
         if s[:half] == s[half:]:
             return n
     return 0

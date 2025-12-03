@@ -4,4 +4,4 @@ def largest_from(start, ints, n_ints):
             if ints[i] == target:
                 return target, i
 
-    raise ValueError(f"Inconceivable!")
+    raise ValueError("Inconceivable!")
