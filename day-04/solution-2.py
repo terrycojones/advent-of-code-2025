@@ -1,15 +1,10 @@
-from lib import read_data, can_remove
+from lib import read_data, removable
 
 data = read_data()
 total = 0
 
 while True:
-    if to_remove := [
-        (row, col)
-        for row in range(len(data))
-        for col in range(len(data[0]))
-        if can_remove(data, row, col)
-    ]:
+    if to_remove := removable(data):
         total += len(to_remove)
         for row, col in to_remove:
             data[row][col] = "x"

@@ -20,3 +20,12 @@ def count_adjacent_rolls(data, row, col):
 
 def can_remove(data, row, col):
     return symbol(data, row, col) == "@" and count_adjacent_rolls(data, row, col) < 4
+
+
+def removable(data):
+    return [
+        (row, col)
+        for row in range(len(data))
+        for col in range(len(data[0]))
+        if can_remove(data, row, col)
+    ]
