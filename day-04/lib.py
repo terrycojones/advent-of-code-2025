@@ -1,4 +1,5 @@
 import sys
+from itertools import product
 
 
 def read_data():
@@ -6,19 +7,14 @@ def read_data():
 
 
 def symbol(data, row, col):
-    cols = len(data[0])
-    if row < 0 or row > len(data) - 1 or col < 0 or col > cols - 1:
-        return "x"
-    else:
-        return data[row][col]        
+    return data[row][col] if 0 <= row < len(data) and 0 <= col < len(data[0]) else "x"
 
 
 def count_adjacent_rolls(data, row, col):
     return sum(
-        symbol(data, row + rowinc, col + colinc) == "@"
-        for rowinc in range(-1, 2)
-        for colinc in range(-1, 2)
-        if rowinc or colinc
+        symbol(data, row + row_inc, col + col_inc) == "@"
+        for row_inc, col_inc in product(range(-1, 2), repeat=2)
+        if row_inc or col_inc
     )
 
 
