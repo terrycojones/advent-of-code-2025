@@ -1,3 +1,3 @@
-from lib import read_data, removable
+from lib import read_data, count_removable
 
-print(removable(read_data()))
+print(count_removable(read_data()))

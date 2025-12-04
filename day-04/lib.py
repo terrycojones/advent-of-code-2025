@@ -22,7 +22,7 @@ def can_remove(data, row, col):
     return symbol(data, row, col) == "@" and count_adjacent_rolls(data, row, col) < 4
 
 
-def removable(data, clear=False):
+def count_removable(data, clear=False):
     count = 0
     for row, col in product(range(len(data)), range(len(data[0]))):
         if can_remove(data, row, col):
