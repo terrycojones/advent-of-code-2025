@@ -25,7 +25,6 @@ def can_remove(data, row, col):
 def removable(data):
     return [
         (row, col)
-        for row in range(len(data))
-        for col in range(len(data[0]))
+        for row, col in product(range(len(data)), range(len(data[0])))
         if can_remove(data, row, col)
     ]
