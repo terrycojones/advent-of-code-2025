@@ -4,8 +4,9 @@ import bisect
 
 class Ingredients:
     def __init__(self):
-        self.ingredients = []
         ranges = []
+        ingredients = []
+
         for line in sys.stdin:
             line = line.strip()
             if line:
@@ -13,17 +14,19 @@ class Ingredients:
                 try:
                     a, b = fields
                 except ValueError:
-                    self.ingredients.append(fields[0])
+                    ingredients.append(fields[0])
                 else:
                     if b < a:
                         a, b = b, a
                     ranges.append((a, b))
 
         self.ranges = self.merge_ranges(sorted(ranges))
+        self.ingredients = ingredients
 
     def merge_ranges(self, ranges):
         result = []
         last_a, last_b = ranges[0]
+
         for a, b in ranges[1:]:
             if a <= last_b:
                 last_b = max(b, last_b)
@@ -34,14 +37,14 @@ class Ingredients:
         result.append((last_a, last_b))
 
         return result
-            
 
     def is_fresh(self, ingredient):
         pos = bisect.bisect_left(self.ranges, (ingredient, ingredient))
-        if pos and pos <= len(self.ranges):
+        if pos <= len(self.ranges):
             a, b = self.ranges[pos - 1]
             return a <= ingredient <= b
-        return False
+        else:
+            return False
 
     def count_fresh(self):
         return sum(self.is_fresh(ingredient) for ingredient in self.ingredients)
