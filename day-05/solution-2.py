@@ -1,3 +1,3 @@
 from lib import Ingredients
 
-print(Ingredients().total_fresh())
+print(Ingredients().count_fresh_ids())

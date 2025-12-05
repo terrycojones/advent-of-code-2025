@@ -46,8 +46,8 @@ class Ingredients:
         else:
             return False
 
-    def count_fresh(self):
+    def count_fresh_ingredients(self):
         return sum(self.is_fresh(ingredient) for ingredient in self.ingredients)
 
-    def total_fresh(self):
+    def count_fresh_ids(self):
         return sum((b - a + 1) for a, b in self.ranges)
