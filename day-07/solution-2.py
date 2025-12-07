@@ -2,13 +2,13 @@ from collections import defaultdict
 from lib import read_data
 
 width, beam, row_splitters = read_data()
-state_count = defaultdict(int)
-state_count[beam] = 1
+state_counts = defaultdict(int)
+state_counts[beam] = 1
 
 for splitters in row_splitters:
     if splitters:
         next_state_counts = defaultdict(int)
-        for state, count in state_count.items():
+        for state, count in state_counts.items():
             if state in splitters:
                 if state - 1 >= 0:
                     next_state_counts[state - 1] += count
@@ -16,7 +16,7 @@ for splitters in row_splitters:
                     next_state_counts[state + 1] += count
             else:
                 next_state_counts[state] += count
-        state_count = next_state_counts
+        state_counts = next_state_counts
 
 
-print(sum(state_count.values()))
+print(sum(state_counts.values()))

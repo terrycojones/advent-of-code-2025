@@ -2,7 +2,7 @@ import sys
 
 
 def read_data():
-    locations = []
+    splitters = []
     first = True
     for line in sys.stdin:
         line = line.strip()
@@ -11,6 +11,6 @@ def read_data():
             width = len(line)
             first = False
         else:
-            locations.append(set(i for i, char in enumerate(line) if char == "^"))
+            splitters.append(set(i for i, char in enumerate(line) if char == "^"))
 
-    return width, beam, locations
+    return width, beam, splitters
