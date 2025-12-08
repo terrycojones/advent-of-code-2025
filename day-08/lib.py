@@ -8,7 +8,7 @@ def read_data():
 
 
 def dist(a, b):
-    return math.sqrt(((a[0] - b[0]) ** 2) + ((a[1] - b[1]) ** 2) + ((a[2] - b[2]) ** 2))
+    return math.sqrt(sum((a[i] - b[i]) ** 2 for i in range(3)))
 
 
 def make_heap(points):
