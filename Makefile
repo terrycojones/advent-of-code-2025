@@ -1,5 +1,5 @@
-all:
-	@echo "There is no default make target"
+wc:
+	find day-* -name '*.py' | xargs wc -l
 
 ruff:
 	ruff check .
