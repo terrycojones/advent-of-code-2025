@@ -1,5 +1,6 @@
 from collections import defaultdict
 from lib import read_data
+import heapq
 
 points = read_data()
 red_points = set(points)
@@ -71,14 +72,19 @@ def red_green_rect(p1, p2):
     return True
 
 
-max_area = 0
+rectangles = []
 
 for i in range(len(points)):
     pi = points[i]
     for j in range(i + 1, len(points)):
         pj = points[j]
         area = abs((pi[0] - pj[0] + 1)) * abs((pi[1] - pj[1] + 1))
-        if area > max_area and red_green_rect(pi, pj):
-            max_area = area
+        rectangles.append((-area, pi, pj))
 
-print(max_area)
+heapq.heapify(rectangles)
+
+while True:
+    area, pi, pj = heapq.heappop(rectangles)
+    if red_green_rect(pi, pj):
+        print(-area)
+        break
