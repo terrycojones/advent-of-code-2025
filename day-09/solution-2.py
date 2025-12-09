@@ -78,7 +78,7 @@ for i in range(len(points)):
     pi = points[i]
     for j in range(i + 1, len(points)):
         pj = points[j]
-        area = abs((pi[0] - pj[0] + 1)) * abs((pi[1] - pj[1] + 1))
+        area = (abs(pi[0] - pj[0]) + 1) * (abs(pi[1] - pj[1]) + 1)
         rectangles.append((-area, pi, pj))
 
 heapq.heapify(rectangles)
