@@ -20,10 +20,6 @@ class BaseMachine:
     def __eq__(self, other):
         return self.state == other.state
 
-    def press(self, button):
-        for n in self.buttons[button]:
-            self.state[n] = not self.state[n]
-
     def __str__(self):
         target = "".join("#" if c else "." for c in self.target)
         state = "".join(str(int(s)) for s in self.state)
