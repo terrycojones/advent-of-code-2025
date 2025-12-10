@@ -20,12 +20,8 @@ class Machine(BaseMachine):
         return True
 
 
-def read_machines():
-    return [Machine.from_string(line.strip()) for line in sys.stdin]
-
-
 def main():
-    machines = read_machines()
+    machines = [Machine.from_string(line.strip()) for line in sys.stdin]
     total = 0
 
     for m in machines:
