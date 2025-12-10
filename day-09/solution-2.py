@@ -81,10 +81,17 @@ for i in range(len(points)):
         area = (abs(pi[0] - pj[0]) + 1) * (abs(pi[1] - pj[1]) + 1)
         rectangles.append((-area, pi, pj))
 
+n_rectangles = len(rectangles)
 heapq.heapify(rectangles)
 
+count = 0
 while True:
     area, pi, pj = heapq.heappop(rectangles)
+    count += 1
     if red_green_rect(pi, pj):
         print(-area)
         break
+
+print(
+    f"{count} of {n_rectangles} rectangles were examined ({count / n_rectangles * 100:.2f}%)."
+)
